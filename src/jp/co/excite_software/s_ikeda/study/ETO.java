@@ -16,6 +16,8 @@ public class ETO {
         戌("いぬ"),
         亥("い"),
         ;
+        // 日本語を使うのは遊びすぎなので実業務ではNG
+
         private String kana;
         private 十二支(String kana) {
             this.kana = kana;
