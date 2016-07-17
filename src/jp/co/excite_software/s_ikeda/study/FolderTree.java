@@ -69,8 +69,9 @@ public class FolderTree {
      */
     public void outputTree(String pathname) throws IOException {
 
-        System.out.println(new File(pathname).getCanonicalPath());
-        outputTree(System.out, "", pathname);
+        File path = new File(pathname);
+        System.out.println(path.getCanonicalPath());
+        outputTree(System.out, "", path);
     }
 
     /**
@@ -80,32 +81,21 @@ public class FolderTree {
      * @param pathname
      * @throws IOException 
      */
-    protected void outputTree(PrintStream out, String indent, String pathname) throws IOException {
-
-        File path = new File(pathname);
+    protected void outputTree(PrintStream out, String indent, File path) throws IOException {
 
         File[] files = path.listFiles(filter);
         Arrays.sort(files, comparator);
 
         for (int i = 0; i < files.length; i++) {
             File file = files[i];
-            String node;
-            if (i < files.length - 1) {
-                node = "├─ ";
-            }
-            else {
-                node = "└─ ";
-            }
+            boolean hasNext = i < files.length - 1;
 
-            out.println(indent + node + file.getName());
+            String node = hasNext ? "├─" : "└─";
+            out.printf("%s%s %s", indent, node, file.getName()).println();
 
             if (file.isDirectory()) {
-                if (i < files.length - 1) {
-                    outputTree(out, indent + "｜  ", file.getCanonicalPath());
-                }
-                else {
-                    outputTree(out, indent + "   ", file.getCanonicalPath());
-                }
+                String nextIndent = hasNext ? "｜  " : "    ";
+                outputTree(out, indent + nextIndent, file);
             }
         }
     }
