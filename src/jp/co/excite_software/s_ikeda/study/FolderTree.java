@@ -12,6 +12,12 @@ public class FolderTree {
     public static void main(String[] args) {
 
         String pathname = "./";
+        if (args.length == 1) {
+            pathname = args[0];
+        }
+        else {
+            pathname = "./";
+        }
 
         try {
             // 非表示属性のファイルは表示しない
@@ -94,7 +100,7 @@ public class FolderTree {
             out.printf("%s%s %s", indent, node, file.getName()).println();
 
             if (file.isDirectory()) {
-                String nextIndent = hasNext ? "｜  " : "    ";
+                String nextIndent = hasNext ? "│  " : "    ";
                 outputTree(out, indent + nextIndent, file);
             }
         }
