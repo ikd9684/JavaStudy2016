@@ -11,7 +11,7 @@ public class FolderTree {
 
     public static void main(String[] args) {
 
-        String pathname = "../JavaStudy2016";
+        String pathname = "./";
 
         try {
             // 非表示属性のファイルは表示しない
