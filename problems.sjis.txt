@@ -1,0 +1,49 @@
+Java演習課題
+
+それぞれ単ーのクラスに実装すること。
+mainメソッドから任意の値を引数にしてこれらメソッドを呼び出し、結果を標準出力に出力すること。
+演習を実施する順序は問わない。
+必要に応じてprivateメソッドを作成して良い。
+クラス名、メソッド名、変数名など含めて名前をきちんと考えて付与すること。
+JavaDocコメントを適切に記述すること。
+githubにアカウントを作って、そこに全て上げていく。
+eclipseを使って、一つのプロジェクトに書き、githubに一つずつ上げる。
+新人社員教育内に自分のフォルダを作って、理解したことをナレッジベースに保存していく。
+
+
+(1) 干支を求める
+　引数 int year で西暦年を受け取り、その年の干支を返すメソド
+public String getEto(int year)
+
+2) 素数を探す
+　引数 int n, int m を受け取り、n ～( の間の素数をすべて求めてListで m返すメソッド
+public List<Integer> getPrimeNumberList(int n, int m)
+
+(3) フィボナッチ数列を求める
+　引数 int n を受け取り、1 ～ n の間のフィボナッチ数列を求めてListで返すメソッド
+public List<Integer> getFibonacciNumberList(int n)
+
+(4) 進歩どうですか？
+　「進抄」「どう」「ですか？」の文字列をそれぞれランダムに表示し、
+　「進抄どうですか？」の順で表示できるまで繰り返す。
+　例: どう進抄進抄ですか？進抄どう進抄どうですか？
+
+(5) カレンダー出力
+　引数 int year, int month を受け取り、その月のカレンダーを標準出力に出力するメソッド
+public void outputCalendar(int year, int month)
+
+(6) フォルダツリー表示
+　引数 String pathname を受け取り、pathname で指定されたフォルダパス配下の
+　フォルダとファイルの一覧を再帰的に取得し、標準出力にツリー形式で表示するメソッド
+public void outputTree(String pathname)
+
+(7) テキスト検索
+　引数 String pathname と String keyword を受け取り、pathname で指定されたテキストファイルから
+　keyword が含まれる行を抜粋して標準出力に出力するメソッド
+　出力するのは「行番号」「該当行の内容」とする。
+public void outputMatches(String pathname, String keyword)
+
+(8) テキストエンコード変換
+　引数 String pathname で指定されたテキストファイルを読み込んで、UTF-8で出力する
+　出力するファイル名は、”{元のファイル名}.utf-8.txt”とすること。
+　　例：　Java演習課題.txt　→　Java演習課題.utf-8.txt
