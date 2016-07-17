@@ -87,7 +87,9 @@ public class FolderTree {
      * @param pathname
      * @throws IOException 
      */
-    protected void outputTree(PrintStream out, String indent, File path) throws IOException {
+    protected boolean outputTree(PrintStream out, String indent, File path) throws IOException {
+
+        boolean isLeaf = true;
 
         File[] files = path.listFiles(filter);
         Arrays.sort(files, comparator);
@@ -101,8 +103,14 @@ public class FolderTree {
 
             if (file.isDirectory()) {
                 String nextIndent = hasNext ? "│  " : "    ";
-                outputTree(out, indent + nextIndent, file);
+                isLeaf = outputTree(out, indent + nextIndent, file);
             }
         }
+        if (isLeaf) {
+            System.out.printf("%s", indent).println();
+            isLeaf = false;
+        }
+
+        return isLeaf;
     }
 }
